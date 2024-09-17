@@ -2,7 +2,7 @@
 # MTM6302 Capstone Project
 
 **Name:** Manveer Singh  
-**Student Number:**  
+**Student Number:** 041129347 
 **Project:** Quiz Web Application
 
 ## Project Overview
