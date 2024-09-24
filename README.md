@@ -33,7 +33,7 @@ This mockup illustrates the key features and layout of the Quiz Web Application.
 - CSS
 - JavaScript
 - QuizAPI
-
+- 
 ## Conclusion
 
 This mockup serves as a visual representation of the Quiz Web Application, highlighting its functionality and design choices. The decisions made prioritize user experience, accessibility, and engagement, ensuring that users enjoy a seamless and interactive quiz experience.
