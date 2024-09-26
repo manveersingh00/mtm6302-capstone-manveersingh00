@@ -37,7 +37,7 @@ This mockup illustrates the key features and layout of the Quiz Web Application.
 
 This mockup serves as a visual representation of the Quiz Web Application, highlighting its functionality and design choices. The decisions made prioritize user experience, accessibility, and engagement, ensuring that users enjoy a seamless and interactive quiz experience.
 
-### Future Development
+## Future Development
 The next steps will involve developing the static prototype and final product based on this mockup, incorporating user feedback and testing to refine the application further.
 
 
