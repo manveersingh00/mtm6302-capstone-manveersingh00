@@ -1,4 +1,4 @@
-# mtm6302-capstone-manveersingh00 Part 3
+# mtm6302-capstone-manveersingh00 Part 4
 # Quiz Web Application
 
 
@@ -35,7 +35,7 @@ This mockup illustrates the key features and layout of the Quiz Web Application.
 - QuizAPI: An external API that provides quiz questions based on the selected difficulty level.
 
 
-## Steps (Creating the Prototype)
+## Steps (Creating the Web Application)
 
 # Set Up Project Structure:
 Created the necessary HTML, CSS, and JavaScript file.

@@ -1,13 +1,14 @@
 const save_correct = document.getElementById("savecorrect");
 const save_incorrect = document.getElementById("saveincorrect");
+const messageBox = document.getElementById("message");
 save_correct.innerText = localStorage.getItem("correct") ? localStorage.getItem("correct") : 0;
 save_incorrect.innerText = localStorage.getItem("incorrect") ? localStorage.getItem("incorrect") : 0;
 
-var diff = "easy";
-var cat = "Linux";
+let diff = "easy";
+let cat = "Linux";
 function getSelectedValue() {
-    var selectElement = document.getElementById("difficulty");
-    var catElement = document.getElementById("category");
+    let selectElement = document.getElementById("difficulty");
+    let catElement = document.getElementById("category");
     diff = selectElement.value;
     cat = catElement.value;
 }
@@ -15,7 +16,8 @@ function getSelectedValue() {
 function resetScore() {
     localStorage.setItem("correct", 0);
     localStorage.setItem("incorrect", 0);
-    location.reload();
+    save_incorrect.innerText = 0;
+    save_correct.innerText = 0;
 }
 
 const startbtn = document.querySelector(".startbtn");
@@ -30,16 +32,16 @@ const callAPI = () => {
 
 startbtn.addEventListener("click", callAPI);
 
-var index = 0;
-var data;
-var total = 0;
-var same_question;
-var option1_d;
-var option2_d;
-var option3_d;
-var option4_d;
-var time;
-var interval;
+let index = 0;
+let data;
+let total = 0;
+let same_question;
+let option1_d;
+let option2_d;
+let option3_d;
+let option4_d;
+let time;
+let interval;
 
 async function getdata(url) {
     const response = await fetch(url);
@@ -58,6 +60,7 @@ const setTimer = () => {
 };
 
 const nextquestion = () => {
+    messageBox.innerText = "";
     time = 59;
     if (index < 10) {
         clearInterval(interval);
@@ -82,7 +85,7 @@ const nextquestion = () => {
     index++;
     same_question = false;
 
-    var timer = document.getElementById("timer");
+    let timer = document.getElementById("timer");
     setInterval(() => {
         timer.innerText = time;
     }, 1000);
@@ -93,6 +96,14 @@ const nextquestion = () => {
         option2_d = document.getElementById("option2");
         option3_d = document.getElementById("option3");
         option4_d = document.getElementById("option4");
+
+        const allOptions = [option1_d, option2_d, option3_d, option4_d];
+        allOptions.forEach((option) => {
+            if (option) {
+                option.disabled = false;
+            }
+        });
+
         const qnumber = document.getElementById("qnumber");
         const correct_a = document.getElementById("correctanswer");
         const incorrect_a = document.getElementById("incorrectanswer");
@@ -174,12 +185,24 @@ const calculate = (user_choice, button) => {
     const answeris = Object.values(data[index - 1].correct_answers)[
         user_choice - 1
     ];
-    if (answeris == "true" && !same_question) {
+
+    if (answeris === "true" && !same_question) {
         total++;
+        messageBox.innerText = "Correct Answer!";
+        messageBox.classList.add("text-success");
+        messageBox.classList.remove("text-danger");
         same_question = true;
+    } else {
+        messageBox.innerText = "Incorrect Answer!";
+        messageBox.classList.add("text-danger");
+        messageBox.classList.remove("text-success");
+
     }
-    if (answeris == "false" && same_question) {
-        total--;
-        same_question = null;
-    }
+
+    const allOptions = [option1_d, option2_d, option3_d, option4_d];
+    allOptions.forEach((option) => {
+        if (option) {
+            option.disabled = true;
+        }
+    });
 };

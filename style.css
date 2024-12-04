@@ -75,3 +75,11 @@ h1{
     justify-content: center;
     display: flex;
 }
+
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    color: var(--bs-btn-disabled-color);
+    pointer-events: none;
+    background-color: #bdbdbd;
+    border-color: #d4d5d5;
+    opacity: var(--bs-btn-disabled-opacity);
+}
